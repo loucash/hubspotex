@@ -2,14 +2,16 @@ defmodule Hubspot.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :hubspotex,
-     version: "0.0.6",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     description: description(),
-     package: package(),
-     deps: deps()]
+    [
+      app: :hubspotex,
+      version: "0.0.6",
+      elixir: "~> 1.8.1",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -29,9 +31,7 @@ defmodule Hubspot.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:httpoison, "~> 0.9.0"},
-     {:poison, "~> 2.0"},
-     {:ex_doc, ">= 0.0.0", only: :dev}]
+    [{:httpoison, "~> 1.5"}, {:poison, "~> 3.1"}, {:ex_doc, ">= 0.0.0", only: :dev}]
   end
 
   defp description do
@@ -41,9 +41,11 @@ defmodule Hubspot.Mixfile do
   end
 
   defp package do
-    [# These are the default files included in the package
-     maintainers: ["Ryan Winchester"],
-     licenses: ["Apache 2.0"],
-     links: %{"GitHub" => "https://github.com/ryanwinchester/hubspotex"}]
+    # These are the default files included in the package
+    [
+      maintainers: ["Ryan Winchester"],
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/ryanwinchester/hubspotex"}
+    ]
   end
 end
